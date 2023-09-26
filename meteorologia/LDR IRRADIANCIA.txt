@@ -1,0 +1,23 @@
+//LDR
+float ldr;
+float tensao;
+float tensao2;
+float rad;
+
+//IRRADIANCIA
+    ldr = analogRead(34); //porta analógica conectada ao pino GPIO 34
+    Serial.print("ldr: ");
+    Serial.println(ldr);
+    tensao = ldr*(3.3/4095.0); //a conversão de 12bits para escala de 0V a 3,3V    
+    Serial.print("tensao: ");
+    Serial.println(tensao);
+    tensao2 = tensao*(5.0/3.3); // a conversão da escala de 3,3V para 5V
+                                              // o trabalho de referência utiliza arduino, que trabalha em 5V
+    Serial.print("tensao2: ");
+    Serial.println(tensao2);
+    rad = 4464.9*exp(-17.73*tensao2);  //a equação de conversão de tensão em irradiancia solar W/m²
+    Serial.print("rad: ");
+    Serial.println(rad);
+
+
+alimentar o ldr com 5v, ajustar os calculos também
